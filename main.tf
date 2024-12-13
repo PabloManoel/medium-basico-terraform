@@ -37,3 +37,7 @@ resource "aws_s3_bucket" "meu-bucket-s3" {
   }
 }
 
+data "aws_vpc" "default" {
+    default = true
+}
+
