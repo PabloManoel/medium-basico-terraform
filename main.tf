@@ -25,6 +25,7 @@ resource "aws_instance" "minha_instancia_ec2" {
     Name = "my-custom-instance"
     contato_suporte = "suporte@sextatech.com"
     contexto        = "sexta-tech"
+    vpc_id          = data.aws_vpc.default.id
   }
 }
 
