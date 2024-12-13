@@ -1,12 +1,7 @@
-resource "aws_instance" "minha_instancia_ec2" {
-  ami           = "ami-06b21ccaeff8cd686"
-  instance_type = "t2.micro"
+module "basic_setup_module" {
+    source = "./modules/basic_setup"
 
-  tags = local.ec2_tags
-}
-
-resource "aws_s3_bucket" "meu-bucket-s3" {
-  bucket = var.bucket_name
-
-  tags = local.default_tags
+    environment = var.environment
+    bucket_name = var.bucket_name
+    instance_name = var.instance_name
 }
