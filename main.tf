@@ -33,7 +33,7 @@ resource "aws_instance" "minha_instancia_ec2" {
 resource "aws_s3_bucket" "meu-bucket-s3" {
   bucket = "sexta-tech-example"
 
-  tags = var.default_tags
+  tags = local.default_tags
 }
 
 // step # 3 - data
@@ -49,7 +49,6 @@ variable "default_tags" {
   default = {
     contato_suporte = "suporte@sextatech.com",
     contexto        = "sexta-tech"
-    env             = "prod"
   }
 }
 
@@ -59,3 +58,14 @@ variable "default_tags" {
 variable "environment" {
   type = string
 }
+
+// step # 5 - locals
+
+locals {
+  default_tags = {
+    contato_suporte = "suporte@sextatech.com",
+    contexto        = "sexta-tech"
+    env             = var.environment
+  }
+}
+
