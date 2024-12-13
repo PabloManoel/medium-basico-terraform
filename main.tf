@@ -26,7 +26,7 @@ resource "aws_instance" "minha_instancia_ec2" {
     contato_suporte = "suporte@sextatech.com"
     contexto        = "sexta-tech"
     vpc_id          = data.aws_vpc.default.id
-    env             = "prod"
+    env             = var.environment
   }
 }
 
@@ -36,9 +36,13 @@ resource "aws_s3_bucket" "meu-bucket-s3" {
   tags = var.default_tags
 }
 
+// step # 3 - data
+
 data "aws_vpc" "default" {
   default = true
 }
+
+// step # 4 - variables
 
 variable "default_tags" {
   type = map(string)
@@ -47,4 +51,11 @@ variable "default_tags" {
     contexto        = "sexta-tech"
     env             = "prod"
   }
+}
+
+// terraform plan -var-file=inventories/dev/terraform.tfvars
+// terraform apply -var-file=inventories/dev/terraform.tfvars -auto-approve
+
+variable "environment" {
+  type = string
 }
