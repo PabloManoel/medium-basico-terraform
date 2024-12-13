@@ -6,7 +6,7 @@ locals {
   }
 
   ec2_tags = merge({
-    Name = "my-custom-instance",
+    Name = var.instance_name,
     vpc_id = data.aws_vpc.default.id
   }, local.default_tags)
 }

@@ -6,7 +6,7 @@ resource "aws_instance" "minha_instancia_ec2" {
 }
 
 resource "aws_s3_bucket" "meu-bucket-s3" {
-  bucket = "sexta-tech-example"
+  bucket = var.bucket_name
 
   tags = local.default_tags
 }
